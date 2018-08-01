@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import Module2 from './module02-components/module2';
 // import Module3 from './module03-propsState/module3';
-import Module4 from './module04-list_conditionals/module4';
+// import Module4 from './module04-list_conditionals/module4';
+import Module5 from './module05-http/module5'
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,8 @@ class App extends Component {
       <div className="App">
         {/* <Module2 /> */}
         {/* <Module3 /> */}
-        <Module4 />
+        {/* <Module4 /> */}
+        <Module5 />
 
       </div>
     );
