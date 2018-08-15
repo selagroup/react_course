@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './movie-list.css'
 import MovieCard from '../movie/movie-card';
 import withLifecyclelog from '../../hoc/withLifecycleLog';
+import ThemeContext from '../../context/theme.context';
 
 class MovieList extends Component {
 
@@ -27,14 +28,22 @@ class MovieList extends Component {
 
     render(){
         // console.log( '[Movie List] rendering');
-        const movies = (this.props.movies || []).map( (movie,index) => 
-        <li key={movie.id}
-            className={ index === this.props.selectedInx ? 'selected' : '' } 
-            onClick={(e)=> this.props.itemSelected(index)} >
-            <MovieCard title={movie.title}
-                year={movie.year}
-                poster={movie.poster} />
-        </li> );
+        
+       const movies =  <ThemeContext.Consumer >
+        {(theme) => {
+                return  (this.props.movies || []).map( (movie,index) => 
+                    <li key={movie.id} 
+                        className={ index === this.props.selectedInx ? `${theme} selected` : `${theme}` } 
+                        onClick={(e)=> this.props.itemSelected(index)} >
+                        <MovieCard title={movie.title}
+                            year={movie.year}
+                            poster={movie.poster} />
+                    </li> );
+            }
+        }
+        
+
+        </ThemeContext.Consumer>
 
         return <ul className="movie-list">
             {movies}

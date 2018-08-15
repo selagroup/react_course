@@ -6,6 +6,16 @@
     margin-bottom: 10px;
 }
 
+.movie-list li.light{
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.movie-list li.dark{
+    margin-bottom: 10px;
+    background-color: #222222;
+}
+
 .movie-list li.selected{
     background-color: lightyellow;
 }

@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import './module6.css';
 import MovieForm from './Movies/movie-form';
 import MovieList, { MovieListWithLifecyclelog } from './Movies/movie-list/movie-list';
+import ThemeContext from './context/theme.context';
 
 const MOVIES_URL = `${process.env.REACT_APP_API_BASE_URL}/${process.env.REACT_APP_API_MOVIES_PREFIX}`;
 
@@ -14,7 +15,8 @@ class Module6 extends PureComponent{
             selectedMovieInx:-1,
             updatingMovie:null,
             movies:null,
-            hasError:false
+            hasError:false,
+            theme:'light'
         }
         this.movieForm = {};
     }
@@ -103,6 +105,13 @@ class Module6 extends PureComponent{
         this.setState( { movies });
     }
 
+    toggleTheme(){
+
+        this.setState(()=>{
+            return  { theme: this.state.theme === 'light' ? 'dark' : 'light' }
+        });
+    }
+
     render(){
         //   const movie = new MovieModel(1, 'Toy Story', 1998);
         // const movie = this.state.movie;
@@ -118,6 +127,7 @@ class Module6 extends PureComponent{
             const updatingMovie = this.state.updatingMovie; 
             form=<div className="form">
                 <MovieForm 
+                    movieId={updatingMovie.id}
                     title={updatingMovie.title}
                     year={updatingMovie.year}
                     changed={this.onMovieChanged.bind(this)}  
@@ -131,24 +141,23 @@ class Module6 extends PureComponent{
         const error = this.state.hasError ? <div className="error">An error has occurred</div> : null
 
         return (
-            <div className="app">
-                <h1 style={style}>Movie Catalog </h1>
-                <section>
-                    {error}
-                    <div className="list">
-                        <button onClick={this.refresh.bind(this)} >Refresh</button>
-
-                        <MovieListWithLifecyclelog
-                             selectedInx={this.state.selectedMovieInx}
-                             itemSelected={this.onMovieSelected.bind(this)}
-                             movies={this.state.movies} ></MovieListWithLifecyclelog>
-                    </div>
-                    {form}
-                </section>
-                
-                
-
-            </div>
+            <ThemeContext.Provider value={this.state.theme} >
+                <div className="app">
+                    <h1 style={style}>Movie Catalog </h1>
+                    <section>
+                        {error}
+                        <div className="list">
+                            <button onClick={this.refresh.bind(this)} >Refresh</button>
+                            <button onClick={this.toggleTheme.bind(this)}>Toggle Theme</button>
+                            <MovieListWithLifecyclelog
+                                selectedInx={this.state.selectedMovieInx}
+                                itemSelected={this.onMovieSelected.bind(this)}
+                                movies={this.state.movies} ></MovieListWithLifecyclelog>
+                        </div>
+                        {form}
+                    </section>
+                </div>
+            </ThemeContext.Provider>
         )
     }
 }
