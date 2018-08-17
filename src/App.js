@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 // import Module3 from './module03-propsState/module3';
 // import Module4 from './module04-list_conditionals/module4';
 // import Module5 from './module05-http/module5'
-import Module6 from './module06-adv_components/module6'
+// import Module6 from './module06-adv_components/module6'
+
+import Module7 from './module07-routing/module7';
 import './App.css';
 
 class App extends Component {
@@ -14,8 +16,8 @@ class App extends Component {
         {/* <Module3 /> */}
         {/* <Module4 /> */}
         {/* <Module5 /> */}
-        <Module6 />  
-
+        {/* <Module6 />   */}
+        <Module7></Module7>
       </div>
     );
   }

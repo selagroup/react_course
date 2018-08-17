@@ -145,10 +145,12 @@ class Module6 extends PureComponent{
                 <div className="app">
                     <h1 style={style}>Movie Catalog </h1>
                     <section>
-                        {error}
-                        <div className="list">
+                        <div>
                             <button onClick={this.refresh.bind(this)} >Refresh</button>
                             <button onClick={this.toggleTheme.bind(this)}>Toggle Theme</button>
+                        </div>
+                        {error}
+                        <div className="list">
                             <MovieListWithLifecyclelog
                                 selectedInx={this.state.selectedMovieInx}
                                 itemSelected={this.onMovieSelected.bind(this)}
