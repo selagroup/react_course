@@ -1,0 +1,24 @@
+.error {
+    text-align: left;
+}
+.error ul{
+    margin: 3px 0;
+    font-size: 12px;
+    
+
+}
+
+form.movie-form {
+    text-align: left;
+
+}
+form.movie-form label{
+    font-size: 14px;
+    font-weight: bold;
+}
+form.movie-form .input-wrapper{
+    margin: 5px 0;
+}
+form.movie-form .select {
+    display: flex;
+}

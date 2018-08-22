@@ -155,6 +155,18 @@
       "poster": "http://www.optionated.com/wp-content/uploads/2014/05/it-movie-poster.jpg",
       "releaseDate": null,
       "genres": []
+    },
+    {
+      "title": "Ferdinand",
+      "year": "2018",
+      "poster": "https://ecdn.teacherspayteachers.com/thumbitem/Ferdinand-Movie-Questions-in-Spanish-Ole-el-viaje-de-Ferdinand-Corridas-toros-3686799-1520207932/original-3686799-1.jpg",
+      "inCinemas": true,
+      "rating": "G",
+      "genres": [
+        "Drama",
+        "Comedy"
+      ],
+      "id": 4793
     }
   ]
 }

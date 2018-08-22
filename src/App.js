@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 // import Module4 from './module04-list_conditionals/module4';
 // import Module5 from './module05-http/module5'
 // import Module6 from './module06-adv_components/module6'
-
-import Module7 from './module07-routing/module7';
+// import Module7 from './module07-routing/module7';
 import './App.css';
+import Module8 from './module08-forms/module8';
 
 class App extends Component {
   render() {
@@ -17,7 +17,8 @@ class App extends Component {
         {/* <Module4 /> */}
         {/* <Module5 /> */}
         {/* <Module6 />   */}
-        <Module7></Module7>
+        {/* <Module7></Module7> */}
+        <Module8></Module8>
       </div>
     );
   }

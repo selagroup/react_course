@@ -1,0 +1,5 @@
+div.card {
+    display: flex;
+    border:solid 1px #e3e3e3;
+    box-shadow:0 2px 5px rgba(0,0,0,0.4);
+}
