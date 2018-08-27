@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redux Counter</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+            font-size: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        section{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+            flex-direction: column; 
+        }
+
+        section .container {
+            font-size: 4rem;
+            display: flex;
+            align-items: center;
+
+        }
+        section .container button {
+            font-weight: bold;
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        section .container .counter {
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+<body>
+    <section>
+
+        <div  class="container" style="font-size: 2rem">
+                <div >Font size</div>
+                <button id="decFontBtn" >-</button>
+                <button id="incFontBtn">+</button>
+        </div>
+        <div class="container">
+            <button id="decBtn" >-</button>
+            <div class="counter"></div>
+            <button id="incBtn">+</button>
+        </div>
+
+    </section>
+    <script>    
+        const counterVal = document.querySelector('.counter');
+        
+        const initialState = {
+            counter:0,
+            fontSize:2.5
+        }
+
+        function render({counter, fontSize}) {
+            counterVal.innerHTML = counter;
+            counterVal.style.fontSize = `${fontSize}em`;
+
+        }
+        
+        function counter(state = 0, action){
+            switch (action.type){
+                case 'DECREMENT':
+                    return state - 1;
+                case 'INCREMENT':
+                    return state + 1;
+                default:
+                    return state;
+            }
+            
+        }
+        function fontSize(state=2.5, action){
+            switch (action.type){
+                case 'DECREASE_FONT':
+                    return  state - 0.5;
+                case 'INCREASE_FONT':
+                    return  state + 0.5;
+                default:
+                    return state;
+            }
+        }
+
+        // function reducer(state = initialState, action){
+        //     switch (action.type){
+        //         case 'DECREMENT':
+        //             return Object.assign({},state,{ counter:state.counter - 1});
+                
+        //         case 'INCREMENT':
+        //             return Object.assign({},state,{ counter:state.counter + 1});
+        //         case 'DECREASE_FONT':
+        //             return Object.assign({},state,{ fontSize: state.fontSize - 0.5 });
+        //         case 'INCREASE_FONT':
+        //             return Object.assign({},state,{ fontSize: state.fontSize + 0.5 });
+        //         default:
+        //             return state;
+        //     }
+        // }
+
+        const store = Redux.createStore(Redux.combineReducers({counter, fontSize}),
+             window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+        
+        document.getElementById('decBtn')
+            .addEventListener('click',()=>{ 
+                store.dispatch({type:'DECREMENT'});
+            });
+
+        document.getElementById('incBtn')
+            .addEventListener('click',()=>{
+                store.dispatch({type:'INCREMENT'});
+            });
+
+        document.getElementById('decFontBtn')
+            .addEventListener('click',()=>{ 
+                store.dispatch({type:'DECREASE_FONT'});
+            });
+
+        document.getElementById('incFontBtn')
+            .addEventListener('click',()=>{
+                store.dispatch({type:'INCREASE_FONT'});
+            });
+
+        store.subscribe(() => {
+            const state = store.getState();
+            render(state);
+        })
+
+        render(initialState);
+        
+    </script>
+</body>
+</html>

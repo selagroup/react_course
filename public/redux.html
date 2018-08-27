@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redux Counter</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+            font-size: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        section{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+            flex-direction: column; 
+        }
+
+        section .container {
+            font-size: 4rem;
+            display: flex;
+            align-items: center;
+
+        }
+        section .container button {
+            font-weight: bold;
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        section .container .counter {
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+<body>
+    <section>
+
+        <div  class="container" style="font-size: 2rem">
+                <div >Font size</div>
+                <button id="decFontBtn" >-</button>
+                <button id="incFontBtn">+</button>
+        </div>
+        <div class="container">
+            <button id="decBtn" >-</button>
+            <div class="counter">0</div>
+            <button id="incBtn">+</button>
+        </div>
+
+    </section>
+    <script>    
+        const counterVal = document.querySelector('.counter');
+        
+        document.getElementById('decBtn')
+            .addEventListener('click',()=>{ 
+            });
+
+        document.getElementById('incBtn')
+            .addEventListener('click',()=>{
+            });
+
+        document.getElementById('decFontBtn')
+            .addEventListener('click',()=>{ 
+            });
+
+        document.getElementById('incFontBtn')
+            .addEventListener('click',()=>{});
+
+        
+    </script>
+</body>
+</html>
