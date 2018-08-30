@@ -4,8 +4,6 @@ export const MOVIE_UPDATED = '[MOVIES] Movie updated';
 export const MOVIES_LOAD =  '[MOVIES] Movies load';
 export const MOVIES_LOAD_ERROR = '[MOVIES] Movies load error'
 
-const MOVIES_URL = `${process.env.REACT_APP_API_BASE_URL}/${process.env.REACT_APP_API_MOVIES_PREFIX}`;
-
 export function moviesLoad(){
     return {type: MOVIES_LOAD}
 }
@@ -24,6 +22,7 @@ export function movieUpdated(movie){
     return { type:MOVIE_UPDATED, payload:{movie} };
 }
 
+const MOVIES_URL = `${process.env.REACT_APP_API_BASE_URL}/${process.env.REACT_APP_API_MOVIES_PREFIX}`;
 
 export function fetchMovies(){
 
