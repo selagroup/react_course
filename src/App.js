@@ -5,8 +5,11 @@ import React, { Component } from 'react';
 // import Module5 from './module05-http/module5'
 // import Module6 from './module06-adv_components/module6'
 // import Module7 from './module07-routing/module7';
+// import Module8 from './module08-forms/module8';
+import Module10 from './module10-react-redux/module10';
 import './App.css';
-import Module8 from './module08-forms/module8';
+import Module10App from './module10-react-redux/module10-app';
+
 
 class App extends Component {
   render() {
@@ -18,7 +21,8 @@ class App extends Component {
         {/* <Module5 /> */}
         {/* <Module6 />   */}
         {/* <Module7></Module7> */}
-        <Module8></Module8>
+        {/* <Module8></Module8> */}
+        <Module10App></Module10App>
       </div>
     );
   }
