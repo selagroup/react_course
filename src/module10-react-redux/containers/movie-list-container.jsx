@@ -2,36 +2,29 @@ import React, {Component} from 'react'
 import MovieList, { MovieListWithLifecyclelog } from '../Movies/movie-list/movie-list';
 import withLifecyclelog from '../hoc/withLifecycleLog';
 import {connect} from 'react-redux';
-import { moviesLoaded, selectMovie } from '../actions/movie.actions';
-
-const MOVIES_URL = `${process.env.REACT_APP_API_BASE_URL}/${process.env.REACT_APP_API_MOVIES_PREFIX}`;
+import { moviesLoaded, selectMovie, fetchMovies } from '../actions/movie.actions';
 
 export class MovieListContainer extends Component {
     
     
     constructor(props){
         super(props);
-        this.state = {
-            selectedMovieInx:-1,
-            movies:null,
-            hasError:false,
-        }
-        this.movieForm = {};
+        
     }
 
-    async componentDidMount(){
-        
-        try {
-            const movies = await fetch(`${MOVIES_URL}`)
-                    .then(this.handleResponse);
+    componentDidMount(){
+        this.props.fetchMovies(); 
+        // try {
+        //     const movies = await fetch(`${MOVIES_URL}`)
+        //             .then(this.handleResponse);
             
-            // this.setState({ movies, hasError:false });
+        //     // this.setState({ movies, hasError:false });
             
-            this.props.moviesLoaded(movies);
+        //     this.props.moviesLoaded(movies);
         
-        } catch (error) {
-            this.handleError(error);
-        }
+        // } catch (error) {
+        //     this.handleError(error);
+        // }
 
     }
 
@@ -40,42 +33,33 @@ export class MovieListContainer extends Component {
         const movie = this.props.movies[selectedInx];
         this.props.history.push(`/movie/${movie.id}`);
     }
-    handleResponse(res){
-
-        if(res.ok){
-            return res.json();
-        }
-
-        throw new Error(`network error: ${res.status} - ${res.statusText}`);
-    }
-
-    handleError(err){
-        console.error(err);
-        this.setState({ hasError: true })
-    }  
+     
     render(){
     
-        const error = this.state.hasError ? <div className="error">An error has occurred</div> : null
+        const error = this.props.hasError ? <div className="error">An error has occurred</div> : null
+        const loading = this.props.loading;
         return <React.Fragment>
                 {error}
-                <div className="list">
-                    <MovieListWithLifecyclelog
-                        selectedInx={this.state.selectedMovieInx}
-                        itemSelected={this.onMovieSelected.bind(this)}
-                        movies={this.props.movies}  ></MovieListWithLifecyclelog>
-                </div>
+                { loading ?
+                    <div className="loading"> Loading Movies...</div>
+                    :<div className="list">
+                        <MovieListWithLifecyclelog
+                            itemSelected={this.onMovieSelected.bind(this)}
+                            movies={this.props.movies}  ></MovieListWithLifecyclelog>
+                    </div>
+                }
         </React.Fragment>
     }
 } 
 
-
 const mapStateToProps = state => ({
     movies:state.movies.movieList,
-    selectedMovieInx:state.movies.selectedMovieInx
+    hasError: state.movies.hasError,
+    loading: state.movies.loading
 });
 
 const mapDispatchToProps = dispatch => ({
-    moviesLoaded: movies => dispatch(moviesLoaded(movies))
+    fetchMovies:  () => dispatch(fetchMovies())
 })
 
 export default connect(

@@ -1,12 +1,15 @@
 import React from 'react'
 import rootReducer from './reducers';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk'
 import Module10 from './module10';
 
-
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    composeEnhancers(applyMiddleware(thunkMiddleware ))
+);
+
 
 class Module10App extends React.Component {
 

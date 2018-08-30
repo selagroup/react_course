@@ -1,16 +1,26 @@
-import { MOVIES_LOADED, SET_MOVIE_UPDATE, MOVIE_UPDATED } from "../actions/movie.actions";
+import { MOVIES_LOADED, 
+    SET_MOVIE_UPDATE,
+    MOVIE_UPDATED,
+    MOVIES_LOAD,
+    MOVIES_LOAD_ERROR } from "../actions/movie.actions";
 
 
 const initialState =  {
     movieList:[],
+    loading:false,
+    hasError:null,
     updatingMovie:null
 }
 
 export function movies(state= initialState, action){
 
     switch (action.type){
+        case MOVIES_LOAD:
+            return { ...state, ...{loading:true} }
+        case MOVIES_LOAD_ERROR:
+            return  { ...state, ...{loading:false, hasError:true}} 
         case MOVIES_LOADED:
-            return { ...state, ...{ movieList:action.payload.movies} };
+            return { ...state, ...{ movieList:action.payload.movies, loading:false, hasError:null} };
         case SET_MOVIE_UPDATE:
             return { ...state, ...{updatingMovie:action.payload.movie} }
         case MOVIE_UPDATED:
