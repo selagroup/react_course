@@ -51,7 +51,7 @@ class Module3 extends Component{
                     <div className="form">
                         <MovieForm changed={this.onMovieChanged.bind(this)}  movieSaved={this.onMovieSaved.bind(this)} ></MovieForm>
                     </div>
-                    <Movie title="Die hard" year="1992" ></Movie>
+                    <Movie title="Die hard" year={1992} ></Movie>
                     <Movie title={movie.title} year={movie.year} ></Movie> 
                 </div>
                 
