@@ -1,0 +1,23 @@
+
+.app h1 {
+    color: blue;
+}
+
+.app section {
+    display: flex;
+    justify-content: center;
+}
+
+.app section .list {
+    flex:3;
+    max-width: 460px;
+    height: 85vh;
+    overflow-y: scroll;
+    padding: 0 10px;
+}
+
+.app section .error {
+    color: red;
+    font-weight: bold;
+}
+
