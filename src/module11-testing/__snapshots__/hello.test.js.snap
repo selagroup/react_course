@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component HELLO snapshot test should render a greeting 1`] = `"<span>Hey, stranger</span>"`;
+
+exports[`Component HELLO snapshot test should render a greeting 2`] = `"<h1>Hello, JennyZZZZ!</h1>"`;
