@@ -17,7 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --verbose --env=jsdom",
+    "test:coverage": "react-scripts test --verbose --coverage",
     "eject": "react-scripts eject",
     "server:start": "json-server --port 3030  --watch ./server/db.json "
   },
